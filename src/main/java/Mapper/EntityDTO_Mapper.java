@@ -18,17 +18,21 @@ public class EntityDTO_Mapper {
 
         //Conversion of user friends to friend list
         List<User_Friend_DTO> friendDtoList=new ArrayList<>();
-        for(User friend: user.getFriends()){
-            friendDtoList.add(toFriendDto(friend));
+        if(user.getFriends()!=null) {
+            for (User friend : user.getFriends()) {
+                friendDtoList.add(toFriendDto(friend));
+            }
+            logiDto.setUserFriendList(friendDtoList);
         }
-        logiDto.setUserFriendList(friendDtoList);
 
         //Conversion of group to groupDto
         List<Group_DTO> groupDtos=new ArrayList<>();
-        for(Group group: user.getGroupList()){
-            groupDtos.add(toDTO(group));
+        if(user.getGroupList()!=null) {
+            for (Group group : user.getGroupList()) {
+                groupDtos.add(toDTO(group));
+            }
+            logiDto.setGroupDtoList(groupDtos);
         }
-        logiDto.setGroupDtoList(groupDtos);
 
         return logiDto;
 

@@ -6,6 +6,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.sql.ast.tree.from.MappedByTableGroup;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,7 +22,7 @@ public class Group extends Base_Model{
     private LocalDateTime creationDate;
     private double totalAmountSpent;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "groupList")
     private List<User> members;
 
     @OneToMany
